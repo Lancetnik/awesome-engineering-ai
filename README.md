@@ -59,10 +59,7 @@ Whole setups you install at once, instead of collecting skills one by one. The p
 
 - 🥇 **[mattpocock/skills](https://github.com/mattpocock/skills)** — "Skills for real engineers": Matt Pocock's working `.claude` directory, published as-is. Ships [grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs), the single skill I would keep if I could keep only one — it interrogates you until the task is actually specified, writes the decision into an ADR, and maintains a project glossary in `CONTEXT.md`. After a few sessions you and the agent speak the same language. Its [prototype](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) skill is listed separately under [Design and UI quality](#design-and-ui-quality).
 - **[gstack](https://github.com/garrytan/gstack)** — Garry Tan's opinionated Claude Code setup: 23 tools split across CEO / Designer / Eng Manager / Release Manager / Doc Engineer / QA roles.
-- **[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)** — the same idea outside code: CRO, copywriting, SEO, analytics, growth engineering.
-- **[android/skills](https://github.com/android/skills)** — official Android development skills.
-- **[google/skills](https://github.com/google/skills)** — official skills for Google products and technologies.
-- **[earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)** — skills for CAD, robotics and hardware design. Narrow, but proof the pattern escaped software.
+- **[andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)** — the minimal end of the pattern: a single `CLAUDE.md` distilled from Karpathy's observations about how LLMs actually write code. No install, no directory tree — one file that changes the agent's defaults.
 
 ## Building and tuning your own skills
 
@@ -70,6 +67,8 @@ Whole setups you install at once, instead of collecting skills one by one. The p
 - **[cangjie-skill](https://github.com/kangarooking/cangjie-skill)** — same direction, wider input: books, long videos and podcasts distilled into executable skills.
 - **[microsoft/SkillOpt](https://github.com/microsoft/SkillOpt)** — trains a skill like a model: epochs, batch size, learning rate, validation gates, no weights touched; output is a deployable `best_skill.md`. Research-flavoured — you need trajectories and a validation set, so it is less "install and go" than the rest of this section.
 - **[HKUDS/OpenSpace](https://github.com/HKUDS/OpenSpace)** — a management layer for skills: organize them and attach them to agents, self-hosted.
+- **[writing-great-skills](https://github.com/mattpocock/skills/blob/main/skills/productivity/writing-great-skills/SKILL.md)** — a skill for writing skills: the conventions that separate one the agent actually invokes from one it ignores. Start here before hand-rolling your first.
+- **[agents-best-practices](https://github.com/DenisSergeevitch/agents-best-practices)** — provider-neutral guidance for Codex, Claude Code and harness design, shipped as a skill rather than a blog post, so the agent applies it while helping you build your own.
 
 ## Spec-driven development
 
@@ -77,6 +76,7 @@ Fix the spec, derive the plan, derive the tasks, and only then let the agent wri
 
 - 🥇 **[grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)** — the light end of SDD: questions until the task is unambiguous, an ADR, a running project glossary. No process change required.
 - ✅ **[superpowers](https://github.com/obra/superpowers)** — brainstorm with probing questions → plan mode → TDD execution, through hard checkpoints. The workhorse, with one annoyance: by default it commits every plan and research note it generates into your repo, and a plan is an intermediate artifact — it belongs in the bin after the merge, not in git history. The sub-agent execution mode is also worth turning off when one focused agent would do.
+- **[wayfinder](https://github.com/mattpocock/skills/tree/main/skills/engineering/wayfinder)** — for work too big to hold in one agent session: charts it as a map of *decision* tickets on your issue tracker — questions whose resolution is a decision, not slices of a build — and works them one at a time until the route is clear. Plans, deliberately does not execute; the urge to start building is the signal you have reached the edge of the map. Readers of my channel chat run it paired with grill-with-docs and report it holds up across sessions.
 - **[github/spec-kit](https://github.com/github/spec-kit)** — GitHub's SDD toolkit: Specify → Plan → Tasks → Implement, on top of 30+ agents. The most popular of the bunch.
 - **[Fission-AI/OpenSpec](https://github.com/Fission-AI/OpenSpec)** — built for changes to a *living* project: specs are the source of truth about current state, every change goes through proposal → apply → archive.
 - **[Q00/ouroboros](https://github.com/Q00/ouroboros)** — "stop prompting, start specifying": a replayable, specification-first workflow.
@@ -92,6 +92,9 @@ The single biggest lever on agent quality and cost: stop it from reading half th
 - ✅ **[codegraph](https://github.com/colbymchenry/codegraph)** — builds an AST graph of the project via tree-sitter: symbols, calls, dependencies. Instead of blind `grep`, the agent asks precise questions — who calls this, what breaks if I change it, show me the signature — and gets a structural answer in milliseconds.
 - 🧪 **[Graphify](https://github.com/Graphify-Labs/graphify)** — same idea, wider input: code, SQL schemas, infra, docs, articles, images and video into one queryable knowledge graph. Works as a skill across Claude Code, Codex, OpenCode, Cursor and Gemini CLI.
 - 🧪 **[code-review-graph](https://github.com/tirth8205/code-review-graph)** — local-first persistent map of the repo, exposed over MCP and CLI, so the agent reads only what is relevant. Benchmarked context reductions on reviews and large repos.
+- **[serena](https://github.com/oraios/serena)** — semantic retrieval *and* editing over MCP: the agent works on symbols through language servers instead of reading and rewriting whole files. The heaviest hitter in this section and the one to try first if you only try one.
+- **[GitNexus](https://github.com/abhigyanpatwari/GitNexus)** — client-side code knowledge graph with no server to run: the same idea as codegraph, minus the setup.
+- **[repomix](https://github.com/yamadashy/repomix)** — the blunt instrument of the section: packs an entire repository into one AI-friendly file. Useless for a large monorepo, unbeatable for handing a small project to a model in one shot.
 - **[jcodemunch-mcp](https://github.com/jgravelle/jcodemunch-mcp)** — symbol-level retrieval from *remote* GitHub repositories over tree-sitter AST, rather than a local index.
 - **[context-mode](https://github.com/mksglu/context-mode)** — sandboxes tool output, persists session memory, routes across platforms via MCP and hooks; claims up to 98% token reduction on tool results.
 - **[agentmemory](https://github.com/rohitg00/agentmemory)** — persistent memory for coding agents, benchmarked rather than asserted. The one survivor of a memory wave that produced six tools in a single radar week: everything else that promised to fix "the agent forgets between sessions" is still below the star floor.
@@ -118,6 +121,7 @@ Everything here is for systems you own or are authorized to test.
 - **[0x4m4/hexstrike-ai](https://github.com/0x4m4/hexstrike-ai)** — MCP server wrapping 150+ pentest tools; the same "hand the agent a toolchain" idea, without the router.
 - **[vercel-labs/deepsec](https://github.com/vercel-labs/deepsec)** — a harness that runs coding agents across your codebase hunting vulnerabilities. Closest to ordinary review of the group: it reads your code rather than attacking a running system.
 - **[trailofbits/skills](https://github.com/trailofbits/skills)** — Claude Code skills for security research, vulnerability detection and audit workflows, from a firm that audits for a living. The audit-methodology end of the section, not the exploit end.
+- **[garak](https://github.com/NVIDIA/garak)** (NVIDIA) — the target here is the model, not the codebase: an LLM vulnerability scanner you point at your own agent or chatbot to probe prompt injection, jailbreaks and the rest before someone else does.
 
 ## Harnesses, GUIs and workspaces
 
@@ -132,6 +136,11 @@ Layers over the agent CLI: a UI, a workspace, or a bundle of capabilities.
 
 ## Coding agent CLIs
 
+The harness and the model are separate purchases. Everything here runs against a provider you choose — a local model, a cheaper API, your existing subscription — which is the whole reason to look past the vendor's own client.
+
+- **[opencode](https://github.com/anomalyco/opencode)** — the reference open-source coding agent, and the substrate half this list builds on: provider-agnostic from the start, so the same terminal workflow runs on Anthropic, OpenAI, a local model, or whatever is cheapest this month.
+- **[codex](https://github.com/openai/codex)** — OpenAI's lightweight terminal agent, and not locked to OpenAI: point it at any compatible provider or a local model through its config.
+- **[forgecode](https://github.com/tailcallhq/forgecode)** — pair programmer across 300+ models (Claude, GPT, Grok, DeepSeek, Gemini and the rest), with model choice as the central feature rather than a settings page.
 - **[kimi-cli](https://github.com/MoonshotAI/kimi-cli)** — one binary, no Node, millisecond startup; sub-agents, screen-recording input, MCP servers the agent configures itself. A free alternative on open Kimi models.
 - **[openinterpreter](https://github.com/openinterpreter/openinterpreter)** — relaunched as a coding agent for open models: run it locally and code against an open model instead of a cloud API.
 - **[pi](https://github.com/earendil-works/pi)** — agent toolkit with a unified LLM API, agent loop, TUI and its own coding-agent CLI.
@@ -141,6 +150,8 @@ Layers over the agent CLI: a UI, a workspace, or a bundle of capabilities.
 - **[orca](https://github.com/stablyai/orca)** — an ADE for a fleet of parallel agents: run any coding agent on your own subscription, switch models, desktop / mobile / VPS.
 - **[traycer](https://github.com/traycerai/traycer)** — runs several agents in parallel with shared memory across different models and providers, with model switching inside one chat and agent-to-agent handoff.
 - **[background-agents](https://github.com/ColeMurray/background-agents)** — open-source background coding agents; a self-hosted take on Codex/Cursor background jobs.
+- **[oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)** — teams-first multi-agent orchestration for Claude Code: agent teams, hooks and HUDs rather than one agent with a longer leash. [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) is the same treatment for Codex.
+- **[paperclip](https://github.com/paperclipai/paperclip)** — an app for managing the agents you run at work, when "which agent is doing what right now" stops being answerable from memory.
 
 ## Web, research and monitoring
 
@@ -185,6 +196,7 @@ The most crowded niche on this list, and the one people argue about most: almost
 - **[design.md](https://github.com/google-labs-code/design.md)** — a `DESIGN.md` format that pins your visual identity as durable context, the way `AGENTS.md` pins conventions. Solves the other half of the problem: not "any taste" but *your* taste, the same on every run.
 - **[ibelick/ui-skills](https://github.com/ibelick/ui-skills)** — skills for design engineers: the front-end and UI work itself, rather than the taste layer above it.
 - **[google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)** — UI design skills built around the Stitch MCP server; works with Gemini CLI, Claude Code and Cursor.
+- **[frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md)** — Anthropic's own answer to the same problem, shipped in the canonical skills repo. Worth trying before the third-party ones purely because it is what the model vendor thinks good front-end looks like.
 - **[microsoft/flint-chart](https://github.com/microsoft/flint-chart)** — the narrow case nobody else covers: a visualization language that lets the agent produce legible charts from a human-editable spec, instead of one more unreadable matplotlib default.
 
 ## Output discipline
