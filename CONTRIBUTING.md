@@ -31,6 +31,7 @@ For the few entries that are products rather than repositories, the equivalent i
 - **Listicles, courses, glossaries and directories** — with the single exception of the [Directories and reference](README.md#directories-and-reference) section, which is deliberately short.
 - **Repositories with no description**, where what the tool does cannot be established from the README.
 - **Anything under 500 stars**, however good. See the bar above.
+- **Self-modifying tools**, while they are still rewriting themselves. A project that edits its own code, prompts and architecture between releases cannot be described in one line for longer than it takes to write the line — an entry here is a claim that holds until someone changes it on purpose, and that is not a promise a self-rewriting codebase makes. Not a judgement on the idea; come back when the behaviour is stable or someone other than the author has verified it.
 
 Popularity is a floor, not an argument. Clearing 500 stars gets a tool considered, nothing more — several 100k+ star repositories are absent on purpose.
 
