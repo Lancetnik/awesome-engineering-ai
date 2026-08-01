@@ -38,6 +38,7 @@ An ❌ is a personal verdict, not a quality judgement — several of them have f
   - [Spec-driven development](#spec-driven-development)
   - [Context, retrieval and memory](#context-retrieval-and-memory)
   - [Review, guardrails and forensics](#review-guardrails-and-forensics)
+  - [Security: pentest, reverse engineering and audit](#security-pentest-reverse-engineering-and-audit)
   - [Harnesses, GUIs and workspaces](#harnesses-guis-and-workspaces)
   - [Coding agent CLIs](#coding-agent-clis)
   - [Orchestration and agent fleets](#orchestration-and-agent-fleets)
@@ -54,7 +55,7 @@ An ❌ is a personal verdict, not a quality judgement — several of them have f
 
 ## Skill libraries
 
-Whole setups you install at once, instead of collecting skills one by one. The pattern of 2026: a role, not a task. The design vertical of the same pattern grew big enough to get its own section — see [Design and UI quality](#design-and-ui-quality).
+Whole setups you install at once, instead of collecting skills one by one. The pattern of 2026: a role, not a task. Two verticals grew big enough to get their own sections: [Design and UI quality](#design-and-ui-quality) and [Security](#security-pentest-reverse-engineering-and-audit).
 
 - 🥇 **[mattpocock/skills](https://github.com/mattpocock/skills)** — "Skills for real engineers": Matt Pocock's working `.claude` directory, published as-is. Ships [grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs), the single skill I would keep if I could keep only one — it interrogates you until the task is actually specified, writes the decision into an ADR, and maintains a project glossary in `CONTEXT.md`. After a few sessions you and the agent speak the same language.
 - **[gstack](https://github.com/garrytan/gstack)** — Garry Tan's opinionated Claude Code setup: 23 tools split across CEO / Designer / Eng Manager / Release Manager / Doc Engineer / QA roles.
@@ -62,8 +63,6 @@ Whole setups you install at once, instead of collecting skills one by one. The p
 - **[android/skills](https://github.com/android/skills)** — official Android development skills.
 - **[google/skills](https://github.com/google/skills)** — official skills for Google products and technologies.
 - **[earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)** — skills for CAD, robotics and hardware design. Narrow, but proof the pattern escaped software.
-- **[zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill)** — reverse engineering and authorized pentest skills, interesting less for the vertical than for the architecture: a *router* that picks the right skill per task, bootstraps the toolchain on the fly and writes back to its own knowledge base. The step after flat skill libraries.
-- **[0x4m4/hexstrike-ai](https://github.com/0x4m4/hexstrike-ai)** — MCP server wrapping 150+ pentest tools; same "hand the agent a toolchain" idea, without the router.
 
 ## Building and tuning your own skills
 
@@ -100,15 +99,25 @@ The single biggest lever on agent quality and cost: stop it from reading half th
 
 ## Review, guardrails and forensics
 
-Everything that checks or constrains what the agent did — before, during and after.
+Everything that checks or constrains what the agent did — before, during and after. Security work proper is [its own section](#security-pentest-reverse-engineering-and-audit); this one is about your own diffs and your own machine.
 
 - **[alibaba/open-code-review](https://github.com/alibaba/open-code-review)** — hybrid reviewer: deterministic pipelines plus an LLM agent, line-level comments, a fine-tuned built-in ruleset (NPE, thread safety, XSS, SQL injection). OpenAI- and Anthropic-compatible.
-- **[vercel-labs/deepsec](https://github.com/vercel-labs/deepsec)** — a harness that runs coding agents across your codebase hunting vulnerabilities.
-- **[strix](https://github.com/usestrix/strix)** — autonomous open-source pentester: point it at your app, it finds and fixes vulnerabilities. A standalone agent rather than a plugin.
 - **[react-doctor](https://github.com/millionco/react-doctor)** — catches the bad React your agent writes.
 - **[tuicr](https://github.com/agavra/tuicr)** — the human half of the loop: a terminal code reviewer with vim bindings, line-level comments, per-file/hunk seen-tracking across sessions, and export to GitHub/GitLab. Reviews uncommitted changes — exactly the diff your agent just produced.
 - **[dcg](https://github.com/Dicklesworthstone/destructive_command_guard)** — blocks destructive git and shell commands before the agent executes them; a guard layer over any CLI agent.
 - **[Mindwalk](https://github.com/cosmtrek/mindwalk)** — replays an agent session on a 3D map of the codebase: where it walked, what it touched.
+
+## Security: pentest, reverse engineering and audit
+
+The other direction: not protecting your repo from the agent, but pointing the agent at a target. Two shapes have emerged — autonomous agents you aim at an application, and skill packs that hand your existing agent a security toolchain.
+
+Everything here is for systems you own or are authorized to test.
+
+- **[strix](https://github.com/usestrix/strix)** — autonomous open-source pentester: point it at your app, it finds and fixes vulnerabilities. A standalone agent rather than a plugin, which makes it the one to reach for when you have no security engineer at all.
+- **[zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill)** — reverse engineering and authorized pentest skills, interesting less for the vertical than for the architecture: a *router* that picks the right skill per task, bootstraps the toolchain on the fly and writes back to its own knowledge base. The step after flat skill libraries.
+- **[0x4m4/hexstrike-ai](https://github.com/0x4m4/hexstrike-ai)** — MCP server wrapping 150+ pentest tools; the same "hand the agent a toolchain" idea, without the router.
+- **[vercel-labs/deepsec](https://github.com/vercel-labs/deepsec)** — a harness that runs coding agents across your codebase hunting vulnerabilities. Closest to ordinary review of the group: it reads your code rather than attacking a running system.
+- **[trailofbits/skills](https://github.com/trailofbits/skills)** — Claude Code skills for security research, vulnerability detection and audit workflows, from a firm that audits for a living. The audit-methodology end of the section, not the exploit end.
 
 ## Harnesses, GUIs and workspaces
 
