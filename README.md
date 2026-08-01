@@ -57,7 +57,7 @@ An ❌ is a personal verdict, not a quality judgement — several of them have f
 
 Whole setups you install at once, instead of collecting skills one by one. The pattern of 2026: a role, not a task. Two verticals grew big enough to get their own sections: [Design and UI quality](#design-and-ui-quality) and [Security](#security-pentest-reverse-engineering-and-audit).
 
-- 🥇 **[mattpocock/skills](https://github.com/mattpocock/skills)** — "Skills for real engineers": Matt Pocock's working `.claude` directory, published as-is. Ships [grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs), the single skill I would keep if I could keep only one — it interrogates you until the task is actually specified, writes the decision into an ADR, and maintains a project glossary in `CONTEXT.md`. After a few sessions you and the agent speak the same language.
+- 🥇 **[mattpocock/skills](https://github.com/mattpocock/skills)** — "Skills for real engineers": Matt Pocock's working `.claude` directory, published as-is. Ships [grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs), the single skill I would keep if I could keep only one — it interrogates you until the task is actually specified, writes the decision into an ADR, and maintains a project glossary in `CONTEXT.md`. After a few sessions you and the agent speak the same language. Its [prototype](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) skill is listed separately under [Design and UI quality](#design-and-ui-quality).
 - **[gstack](https://github.com/garrytan/gstack)** — Garry Tan's opinionated Claude Code setup: 23 tools split across CEO / Designer / Eng Manager / Release Manager / Doc Engineer / QA roles.
 - **[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)** — the same idea outside code: CRO, copywriting, SEO, analytics, growth engineering.
 - **[android/skills](https://github.com/android/skills)** — official Android development skills.
@@ -176,8 +176,9 @@ Skills that give the agent a modality it did not have.
 
 ## Design and UI quality
 
-The most crowded niche on this list, and the one people argue about most: every one of these promises the agent will stop producing slop. They attack it from different ends — a skill that overrides its defaults, a design language it reasons in, a spec file that pins your identity, a library of ready UI skills. Nobody has convincingly won yet, which is why there are seven of them.
+The most crowded niche on this list, and the one people argue about most: almost every one of these promises the agent will stop producing slop. They attack it from different ends — a skill that overrides its defaults, a design language it reasons in, a spec file that pins your identity, a library of ready UI skills. Nobody has convincingly won yet, which is why there are eight of them — and why the one I recommend sidesteps the promise entirely and just shows you variants.
 
+- ✅ **[prototype](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype)** — the odd one out here, and the one I actually recommend: it does not try to give the agent taste, it makes the agent show you options. Ask "what should this look like" and it generates several radically different UI variations on one throwaway route, switchable from a floating bar, so you choose instead of arguing with a model about aesthetics. The other branch answers "does this state model feel right" with a tiny interactive terminal app. Throwaway by design — one command to run, no persistence, no tests, and an explicit ritual for folding the verdict back into real code and throwing the rest away.
 - **[hallmark](https://github.com/Nutlope/hallmark)** — the anti-AI-slop skill: install it and the agent stops reaching for purple gradients. The breakout of July 2026 — 4.6k to 12.4k stars in a week.
 - 🧪 **[taste-skill](https://github.com/Leonxlnx/taste-skill)** — the same promise, and the most popular skill in the category. I ran it on my own site: it produced three concepts on its own and the result was decent, though slop still shows through. Whether that was the skill or just a strong model, I could not fully separate — which is the honest state of this whole section.
 - **[impeccable](https://github.com/pbakaus/impeccable)** — not a skill but a design language your harness reasons in, so the taste survives across tools instead of living in one agent's prompt.
@@ -190,7 +191,7 @@ The most crowded niche on this list, and the one people argue about most: every 
 
 Skills that change the *form* of what the agent says, not its knowledge or its aesthetics.
 
-- **[i-have-adhd](https://github.com/ayghri/i-have-adhd)** — forces answer-first output: the conclusion up top, not buried under a wind-up.
+- 🧪 **[i-have-adhd](https://github.com/ayghri/i-have-adhd)** — forces answer-first output: the conclusion up top, not buried under a wind-up.
 - ❌ **[ponytail](https://github.com/DietrichGebert/ponytail)** — makes the agent lazy on purpose: think like the laziest senior on the team, "the best code is the code you didn't write". Changed nothing measurable on my projects, despite 80k+ stars. Possibly because I am already the laziest senior in the room.
 - ❌ **[caveman](https://github.com/JuliusBrussee/caveman)** — the model talks like a caveman: "Me make. Done." Claims 60% token savings; measured savings are closer to 8%. Some people find the output easier to scan; for me it was not worth it.
 
