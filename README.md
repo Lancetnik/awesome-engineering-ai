@@ -112,6 +112,7 @@ Everything that checks or constrains what the agent did — before, during and a
 - **[tuicr](https://github.com/agavra/tuicr)** — the human half of the loop: a terminal code reviewer with vim bindings, line-level comments, per-file/hunk seen-tracking across sessions, and export to GitHub/GitLab. Reviews uncommitted changes — exactly the diff your agent just produced.
 - **[dcg](https://github.com/Dicklesworthstone/destructive_command_guard)** — blocks destructive git and shell commands before the agent executes them; a guard layer over any CLI agent.
 - **[Mindwalk](https://github.com/cosmtrek/mindwalk)** — replays an agent session on a 3D map of the codebase: where it walked, what it touched.
+- **[agent-qa](https://github.com/vostride/agent-qa)** — turns the application check after an agent's diff into a reusable web and mobile regression loop: natural-language tests, persistent test memory, self-healing flows and evidence through a dashboard, CLI and MCP.
 
 ## Security: pentest, reverse engineering and audit
 
