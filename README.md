@@ -144,6 +144,7 @@ Layers over the agent CLI: a UI, a workspace, or a bundle of capabilities.
 - **[ECC](https://github.com/affaan-m/ECC)** — an installable capability layer over Claude Code / Codex / Opencode / Cursor: skills, instincts, memory, security and a research-first process.
 - **[jcode](https://github.com/1jehuang/jcode)** — a deliberately minimal harness, tuned for low RAM against the GUI-heavy alternatives.
 - **[claude-code-templates](https://github.com/davila7/claude-code-templates)** — CLI for configuring and monitoring Claude Code: agent, command and hook templates.
+- **[sandbase-harness](https://github.com/sandbaseai/sandbase-harness)** — local-first runtime for durable agent sessions with sandboxed tools, MCP access, approvals, credentials, audit, and replay.
 
 ## Coding agent CLIs
 
