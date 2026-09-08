@@ -159,6 +159,7 @@ The harness and the model are separate purchases. Everything here runs against a
 
 ## Orchestration and agent fleets
 
+- **[Orkas](https://github.com/Orkas-AI/Orkas)** — open-source, local-first desktop workspace where a Commander turns goals into plans and coordinates specialist agents through one chat.
 - **[orca](https://github.com/stablyai/orca)** — an ADE for a fleet of parallel agents: run any coding agent on your own subscription, switch models, desktop / mobile / VPS.
 - **[traycer](https://github.com/traycerai/traycer)** — runs several agents in parallel with shared memory across different models and providers, with model switching inside one chat and agent-to-agent handoff.
 - **[background-agents](https://github.com/ColeMurray/background-agents)** — open-source background coding agents; a self-hosted take on Codex/Cursor background jobs.
