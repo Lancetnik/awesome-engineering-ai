@@ -171,6 +171,7 @@ The harness and the model are separate purchases. Everything here runs against a
 
 Everything that lets the agent reach outside your codebase.
 
+- **[Statsnet](https://github.com/usenetstate/statsnet-mcp)** — remote MCP for world company background checks (registration, executives, courts, finances). `https://statsnet.co/mcp` · Registry `io.github.usenetstate/statsnet`.
 - **[wigolo](https://github.com/KnockOutEZ/wigolo)** — local MCP web layer: search / fetch / crawl / extract / research from one server, multi-engine search with rank fusion and on-device rerank. No API keys, no per-query billing.
 - **[ego-lite](https://github.com/citrolabs/ego-lite)** — a browser for coding agents that *shares your logged-in state*, so the agent automates the web under your sessions without fighting you for the profile. Zero config.
 - **[chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)** — the official one: a real browser with a debugger, so the agent reads the console, the network tab and performance traces and reproduces the bug itself instead of trusting your retelling.
