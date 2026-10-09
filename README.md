@@ -133,6 +133,7 @@ Everything here is for systems you own or are authorized to test.
 - **[vercel-labs/deepsec](https://github.com/vercel-labs/deepsec)** — a harness that runs coding agents across your codebase hunting vulnerabilities. Closest to ordinary review of the group: it reads your code rather than attacking a running system.
 - **[trailofbits/skills](https://github.com/trailofbits/skills)** — Claude Code skills for security research, vulnerability detection and audit workflows, from a firm that audits for a living. The audit-methodology end of the section, not the exploit end.
 - **[garak](https://github.com/NVIDIA/garak)** (NVIDIA) — the target here is the model, not the codebase: an LLM vulnerability scanner you point at your own agent or chatbot to probe prompt injection, jailbreaks and the rest before someone else does.
+- **[REA](https://github.com/morluto/rea)** — gives a coding agent local CLI and MCP tools to inspect shipped binaries, JavaScript/Electron apps and .NET assemblies, returning evidence provenance and explicit unknowns; native deep analysis uses separately installed Hopper, Ghidra or IDA.
 
 ## Harnesses, GUIs and workspaces
 
